@@ -48,10 +48,7 @@ public class DespairBox extends Block implements IWaterLoggable {
     public VoxelShape getShape(BlockState state, IBlockReader world, BlockPos pos, ISelectionContext context) {
         Vector3d offset = state.getOffset(world, pos);
         return VoxelShapes.or(makeCuboidShape(1, 0, 1, 2, 10, 15),makeCuboidShape(1, 0, 1, 15, 10, 2),makeCuboidShape(14, 0, 1, 15, 10, 15),makeCuboidShape(2, 0, 14, 15, 10, 15),makeCuboidShape(1, 0, 1, 15, 1, 15)
-
-
                 )
-
                 .withOffset(offset.x, offset.y, offset.z);
     }
     @OnlyIn(Dist.CLIENT)

@@ -60,10 +60,5 @@ public class D3Procedure {
             ((PlayerEntity) entity).inventory.func_234564_a_(p -> _stktoremove.getItem() == p.getItem(), (int) 1,
                     ((PlayerEntity) entity).container.func_234641_j_());
         }
-        if (entity instanceof PlayerEntity && !entity.world.isRemote()) {
-            ((PlayerEntity) entity).sendStatusMessage(new StringTextComponent(
-                            "\u89E6\u53D1\u610F\u8BC6\u4F53\u6210\u529F\uFF0C\u6210\u529F\u5728\u60A8\u7684\u4F4D\u7F6E\u751F\u6210\u8BE5\u5B9E\u4F53\uFF01"),
-                    (false));
         }
     }
-}

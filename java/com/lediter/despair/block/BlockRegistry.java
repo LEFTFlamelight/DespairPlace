@@ -2,7 +2,6 @@ package com.lediter.despair.block;
 
 import com.lediter.despair.DespairMod;
 import com.lediter.despair.block.superBlock.*;
-import com.lediter.despair.block.superBlock.*;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

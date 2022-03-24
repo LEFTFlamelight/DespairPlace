@@ -8,7 +8,7 @@ import net.minecraft.util.LazyValue;
 import java.util.function.Supplier;
 
 public enum ExampleTools implements IItemTier {
-
+//最大使用次数，效率，攻击伤害，等级，附魔等级
     DESPAIR(4000,10.0F,10.0F,5,5,()->{
         return Ingredient.fromItems(ItemRegistry.DESPAIR_CRYSTAL.get());
     });

@@ -11,6 +11,7 @@ import net.minecraft.util.SoundEvents;
 import java.util.function.Supplier;
 
 public enum ExampleArmor implements IArmorMaterial {
+    //名称，最大承受伤害系数，盔甲值，附魔等级，声音事件，韧性，击退抗性。
     DESPAIR("despair",35,new int[]{3,6,8,3},15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,4.5F,0.5F,()->{
         return Ingredient.fromItems(ItemRegistry.DESPAIR_CRYSTAL.get());
     });

@@ -2,14 +2,20 @@ package com.lediter.despair.item;
 
 import com.lediter.despair.DespairMod;
 import com.lediter.despair.block.BlockRegistry;
+import com.lediter.despair.entity.EntityTypeRegister;
+import com.lediter.despair.entity.KiriaEntity;
 import com.lediter.despair.item.superItem.*;
 import com.lediter.despair.tools.ExampleArmor;
 import com.lediter.despair.tools.ExampleTools;
+import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.function.Supplier;
 
 
 public class ItemRegistry {
@@ -27,7 +33,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> EMPTY_CONSCIOUSNESS_TEMPLATE;
     public static final RegistryObject<Item> ZOMBIE_CONSCIOUSNESS;
     public static final RegistryObject<Item> WITHER_CONSCIOUSNESS;
-
 
 
 
@@ -64,9 +69,6 @@ static{
     EMPTY_CONSCIOUSNESS_TEMPLATE=ITEMS.register("empty_consciousness_template",() -> new EmptyConsciousnessTemplate(new Item.Properties().group(DespairMod.ITEMS)));
     ZOMBIE_CONSCIOUSNESS=ITEMS.register("zombie_consciousness",() -> new ZombieConsciousness(new Item.Properties().group(DespairMod.ITEMS)));
     WITHER_CONSCIOUSNESS=ITEMS.register("wither_consciousness",() -> new WitherConsciousness(new Item.Properties().group(DespairMod.ITEMS)));
-
-
-
 
     //工具添加注册
     DESPAIR_AXE=ITEMS.register("despair_axe",() -> new AxeItem(ExampleTools.DESPAIR,5,-3F,new Item.Properties().group(DespairMod.ITEMS)));

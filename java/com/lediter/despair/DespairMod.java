@@ -1,6 +1,9 @@
 package com.lediter.despair;
 
 import com.lediter.despair.block.BlockRegistry;
+import com.lediter.despair.entity.EntityTypeRegister;
+import com.lediter.despair.entity.KiriaEntity;
+import com.lediter.despair.entity.KiriaEntityRenderer;
 import com.lediter.despair.item.ItemRegistry;
 import com.lediter.despair.sound.SoundRegistry;
 import net.minecraft.block.Block;
@@ -35,16 +38,19 @@ public class DespairMod
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
 public static final String MOD_ID="despair";
-    public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation("spear_bl", "spear_bl"),
+    public static final SimpleChannel PACKET_HANDLER = NetworkRegistry.newSimpleChannel(new ResourceLocation("despair", "despair"),
             () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
     public DespairMod() {
         // Register the setup method for modloading
+        FMLJavaModLoadingContext.get().getModEventBus().register(new KiriaEntityRenderer.ModelRegisterHandler());
+        FMLJavaModLoadingContext.get().getModEventBus().register(new KiriaEntity.EntityAttributesRegisterHandler());
+
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
         ItemRegistry.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         SoundRegistry.SOUNDS.register(FMLJavaModLoadingContext.get().getModEventBus());
-
+        EntityTypeRegister.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
         // Register the enqueueIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
