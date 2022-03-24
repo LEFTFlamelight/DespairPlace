@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "despair:despair_crystal"
+    },
+    "title": "绝望",
+    "description": "获得绝望碎片",
+    "background": "despair:textures/background.png",
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_despair_sword": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "despair:despair_crystal",
+            "count": 1
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "get_despair_sword"
+    ]
+  ],
+  "rewards": {
+    "experience": 5
+  }
+}

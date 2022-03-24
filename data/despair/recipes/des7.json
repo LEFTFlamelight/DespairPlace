@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "despair:despair_block"
+    }
+  ],
+  "result": {
+    "item": "despair:despair_crystal",
+    "count": 9
+  }
+}

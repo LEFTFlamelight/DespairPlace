@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "B": {
+      "item": "despair:empty_consciousness_template"
+    }
+  },
+  "result": {
+    "item": "despair:zombie_consciousness",
+    "count": 1
+  }
+}

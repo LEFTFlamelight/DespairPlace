@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "BCB",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:coal"
+    },
+    "B": {
+      "item": "minecraft:bone"
+    },
+    "C": {
+      "item": "despair:empty_consciousness_template"
+    }
+  },
+  "result": {
+    "item": "despair:wither_consciousness",
+    "count": 1
+  }
+}

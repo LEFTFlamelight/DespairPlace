@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "DYD",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "despair:despair_fragment"
+    },
+    "Y": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "despair:despair_crystal",
+    "count": 1
+  }
+}

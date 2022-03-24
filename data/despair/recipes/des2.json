@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DYD",
+    "DYD",
+    "DFD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:air"
+    },
+    "Y": {
+      "item": "despair:despair_block"
+    },
+    "F": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "despair:despair_sword",
+    "count": 1
+  }
+}
