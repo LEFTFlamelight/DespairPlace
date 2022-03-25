@@ -14,8 +14,7 @@ DespairPlace
 
 # 介绍：
 
-暂无
-
-
-### DOWLOAD:
-### 下载链接：![0.0.2Version版本](https://github.com/LEFTFlamelight/DespairPlace/raw/1.16.5-Forge/Dowload/DespairPlace-0.0.2.jar)
+#### 玩家死亡后，重生之后获得一块绝望碎片。
+#### After the player dies, after respawning, a Despair Shard is obtained.
+#### 这块碎片能干什么？我们将会在后面的探索中去发现。
+#### What can this fragment do? We will find out in the following exploration.
