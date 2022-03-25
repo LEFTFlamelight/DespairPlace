@@ -18,4 +18,4 @@ DespairPlace
 
 
 ### DOWLOAD:
-### 下载链接：![0.0.2Beta](https://github.com/LEFTFlamelight/DespairPlace/raw/1.16.5-Forge/Dowload/DespairPlace-0.0.2Beta.jar)
+### 下载链接：![0.0.2Version版本](https://github.com/LEFTFlamelight/DespairPlace/raw/1.16.5-Forge/Dowload/DespairPlace-0.0.2.jar)
