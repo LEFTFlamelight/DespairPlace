@@ -1,10 +1,14 @@
 package com.lediter.despair.block.superBlock;
 
+import com.lediter.despair.block.superBlock.tileentity.CustomTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.LootContext;
 import net.minecraft.tileentity.TileEntity;
@@ -34,12 +38,18 @@ public class RotaryContainer extends Block {
     @ObjectHolder("despair:rotary_container")
     public static final Block block = null;
 
+    @ObjectHolder("despair:rotary_container")
+    public static final TileEntityType<CustomTileEntity> tileEntityType = null;
+    public static class TileEntityRegisterHandler {
+        @SubscribeEvent
+        public void registerTileEntity(RegistryEvent.Register<TileEntityType<?>> event) {
+            event.getRegistry().register(TileEntityType.Builder.create(CustomTileEntity::new, block).build(null).setRegistryName("rotary_container"));
+        }
+    }
     @OnlyIn(Dist.CLIENT)
     public void clientLoad(FMLClientSetupEvent event) {
         RenderTypeLookup.setRenderLayer(block, RenderType.getCutout());
     }
-
-
 
     public RotaryContainer(Properties properties) {
         super(properties);
@@ -53,7 +63,51 @@ public class RotaryContainer extends Block {
 
                 .withOffset(offset.x, offset.y, offset.z);
     }
+    @Override
+    public INamedContainerProvider getContainer(BlockState state, World worldIn, BlockPos pos) {
+        TileEntity tileEntity = worldIn.getTileEntity(pos);
+        return tileEntity instanceof INamedContainerProvider ? (INamedContainerProvider) tileEntity : null;
+    }
 
+    @Override
+    public boolean hasTileEntity(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+        return new CustomTileEntity();
+    }
+    @Override
+    public boolean eventReceived(BlockState state, World world, BlockPos pos, int eventID, int eventParam) {
+        super.eventReceived(state, world, pos, eventID, eventParam);
+        TileEntity tileentity = world.getTileEntity(pos);
+        return tileentity == null ? false : tileentity.receiveClientEvent(eventID, eventParam);
+    }
+    @Override
+    public void onReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            TileEntity tileentity = world.getTileEntity(pos);
+            if (tileentity instanceof CustomTileEntity) {
+                InventoryHelper.dropInventoryItems(world, pos, (CustomTileEntity) tileentity);
+                world.updateComparatorOutputLevel(pos, this);
+            }
+
+            super.onReplaced(state, world, pos, newState, isMoving);
+        }
+    }
+    @Override
+    public boolean hasComparatorInputOverride(BlockState state) {
+        return true;
+    }
+    @Override
+    public int getComparatorInputOverride(BlockState blockState, World world, BlockPos pos) {
+        TileEntity tileentity = world.getTileEntity(pos);
+        if (tileentity instanceof CustomTileEntity)
+            return Container.calcRedstoneFromInventory((CustomTileEntity) tileentity);
+        else
+            return 0;
+    }
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 
@@ -63,22 +117,4 @@ public class RotaryContainer extends Block {
         return Collections.singletonList(new ItemStack(this, 1));
 
     }
-//    @Override
-//    public ActionResultType onBlockActivated(BlockState blockstate, World world, BlockPos pos, PlayerEntity entity, Hand hand,
-//                                             BlockRayTraceResult hit) {
-//        super.onBlockActivated(blockstate, world, pos, entity, hand, hit);
-//
-//        int x = pos.getX();
-//        int y = pos.getY();
-//        int z = pos.getZ();
-//
-//        double hitX = hit.getHitVec().x;
-//        double hitY = hit.getHitVec().y;
-//        double hitZ = hit.getHitVec().z;
-//        Direction direction = hit.getFace();
-//
-//        D5Procedure.executeProcedure(Stream.of(new AbstractMap.SimpleEntry<>("entity", entity)).collect(HashMap::new,
-//                (_m, _e) -> _m.put(_e.getKey(), _e.getValue()), Map::putAll));
-//        return ActionResultType.SUCCESS;
-//    }
 }

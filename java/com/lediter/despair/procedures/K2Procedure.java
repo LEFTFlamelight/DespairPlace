@@ -64,7 +64,7 @@ public class K2Procedure {
 						return Comparator.comparing((Function<Entity, Double>) (_entcnd -> _entcnd.getDistanceSq(_x, _y, _z)));
 					}
 				}.compareDistOf(x, y, z)).orElse(null)))).getHealth()
-						: -1) <= 60) {
+						: -1) <= 100) {
 			if (world instanceof ServerWorld) {
 				MobEntity entityToSpawn = new CreeperEntity(EntityType.CREEPER, (World) world);
 				entityToSpawn.setLocationAndAngles(x, y, z, world.getRandom().nextFloat() * 360F, 0);

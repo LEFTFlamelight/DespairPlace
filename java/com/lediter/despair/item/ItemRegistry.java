@@ -33,6 +33,10 @@ public class ItemRegistry {
     public static final RegistryObject<Item> EMPTY_CONSCIOUSNESS_TEMPLATE;
     public static final RegistryObject<Item> ZOMBIE_CONSCIOUSNESS;
     public static final RegistryObject<Item> WITHER_CONSCIOUSNESS;
+    public static final RegistryObject<Item> KIRIA_CONSCIOUSNESS;
+    public static final RegistryObject<Item> TFGOGP;
+    public static final RegistryObject<Item> DEATH_BOX;
+
 
 
 
@@ -69,6 +73,9 @@ static{
     EMPTY_CONSCIOUSNESS_TEMPLATE=ITEMS.register("empty_consciousness_template",() -> new EmptyConsciousnessTemplate(new Item.Properties().group(DespairMod.ITEMS)));
     ZOMBIE_CONSCIOUSNESS=ITEMS.register("zombie_consciousness",() -> new ZombieConsciousness(new Item.Properties().group(DespairMod.ITEMS)));
     WITHER_CONSCIOUSNESS=ITEMS.register("wither_consciousness",() -> new WitherConsciousness(new Item.Properties().group(DespairMod.ITEMS)));
+    KIRIA_CONSCIOUSNESS=ITEMS.register("kiria_consciousness",() -> new KiriaConsciousness(new Item.Properties().group(DespairMod.ITEMS)));
+    TFGOGP=ITEMS.register("tfgogp",() -> new Tfgogp(new Item.Properties().group(DespairMod.ITEMS)));
+    DEATH_BOX=ITEMS.register("death_box",() -> new DeathBox(new Item.Properties().group(DespairMod.ITEMS)));
 
     //工具添加注册
     DESPAIR_AXE=ITEMS.register("despair_axe",() -> new AxeItem(ExampleTools.DESPAIR,5,-3F,new Item.Properties().group(DespairMod.ITEMS)));

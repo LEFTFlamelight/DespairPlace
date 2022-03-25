@@ -7,10 +7,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.goal.*;
-import net.minecraft.entity.monster.CreeperEntity;
-import net.minecraft.entity.monster.MonsterEntity;
-import net.minecraft.entity.monster.SkeletonEntity;
-import net.minecraft.entity.monster.ZombieEntity;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
@@ -33,7 +30,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 
 public class KiriaEntity extends MonsterEntity {
-    protected KiriaEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
+    public KiriaEntity(EntityType<? extends MonsterEntity> type, World worldIn) {
         super(type, worldIn);
         experienceValue = 5;
         setNoAI(false);
@@ -49,8 +46,8 @@ public class KiriaEntity extends MonsterEntity {
         public void onEntityAttributeCreation(EntityAttributeCreationEvent event) {
             AttributeModifierMap.MutableAttribute ammma = MobEntity.func_233666_p_();
             ammma = ammma.createMutableAttribute(Attributes.MOVEMENT_SPEED, 0.3);
-            ammma = ammma.createMutableAttribute(Attributes.MAX_HEALTH, 120);
-            ammma = ammma.createMutableAttribute(Attributes.ARMOR, 0);
+            ammma = ammma.createMutableAttribute(Attributes.MAX_HEALTH, 250);
+            ammma = ammma.createMutableAttribute(Attributes.ARMOR, 5);
             ammma = ammma.createMutableAttribute(Attributes.ATTACK_DAMAGE, 1);
             event.put(EntityTypeRegister.KIRIA_ENTITY.get(), ammma.create());
         }
@@ -67,6 +64,9 @@ public class KiriaEntity extends MonsterEntity {
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, PlayerEntity.class, false, false));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, ZombieEntity.class, false, false));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal(this, SkeletonEntity.class, false, false));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal(this, SpiderEntity.class, false, false));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal(this, WitchEntity.class, false, false));
+        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal(this, EndermanEntity.class, false, false));
         this.goalSelector.addGoal(6, new RandomWalkingGoal(this, 1));
         this.targetSelector.addGoal(7, new HurtByTargetGoal(this));
         this.goalSelector.addGoal(8, new LookRandomlyGoal(this));
@@ -91,7 +91,10 @@ public class KiriaEntity extends MonsterEntity {
         super.dropSpecialItems(source, looting, recentlyHitIn);
         this.entityDropItem(new ItemStack(ItemRegistry.DESPAIR_STONE.get()));
     }
-
+    @Override
+    public net.minecraft.util.SoundEvent getAmbientSound() {
+        return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.parrot.imitate.creeper"));
+    }
     @Override
     public net.minecraft.util.SoundEvent getHurtSound(DamageSource ds) {
         return (net.minecraft.util.SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.creeper.hurt"));
