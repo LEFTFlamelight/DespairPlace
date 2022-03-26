@@ -14,7 +14,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class BlockRegistry {
     public static final DeferredRegister<Block> BLOCKS=DeferredRegister.create(ForgeRegistries.BLOCKS, DespairMod.MOD_ID);
-    public static final RegistryObject<Block> DESPAIR_BLOCK=BLOCKS.register("despair_block",()->new DespairBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.BLUE).hardnessAndResistance(6.0F,7.0F).harvestTool(ToolType.PICKAXE).harvestLevel(5)));
+    public static final RegistryObject<Block> DESPAIR_BLOCK=BLOCKS.register("despair_block",()->new DespairBlock(AbstractBlock.Properties.create(Material.IRON, MaterialColor.BLUE).hardnessAndResistance(6.0F,7.0F).harvestTool(ToolType.PICKAXE).harvestLevel(5).sound(SoundType.NETHER_GOLD)));
     public static final RegistryObject<Block> DESPAIR_BOX=BLOCKS.register("despair_box",()->new DespairBox(AbstractBlock.Properties.create(Material.IRON, MaterialColor.BLUE).hardnessAndResistance(6.0F,7.0F).harvestTool(ToolType.PICKAXE).harvestLevel(5).hardnessAndResistance(1f, 10f).setLightLevel(s -> 0).notSolid()//透明
             .setOpaque((bs, br, bp) -> false)));
 
@@ -32,4 +32,12 @@ public class BlockRegistry {
     public static final RegistryObject<Block> TURNING_STAIRS=BLOCKS.register("turning_stairs",()->new TurningStairs(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.BLUE).hardnessAndResistance(4.0F,4.0F).harvestTool(ToolType.PICKAXE).harvestLevel(4)));
     public static final RegistryObject<Block> ROTARY_CONTAINER=BLOCKS.register("rotary_container",()->new RotaryContainer(AbstractBlock.Properties.create(Material.GLASS, MaterialColor.BLUE).hardnessAndResistance(6.0F,7.0F).harvestTool(ToolType.PICKAXE).harvestLevel(5).sound(SoundType.GLASS).notSolid()));
     public static final RegistryObject<Block> DESPAIR_STONE=BLOCKS.register("despair_stone",()->new DespairStone(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.BLUE).hardnessAndResistance(4.0F,4.0F).harvestTool(ToolType.PICKAXE).harvestLevel(4)));
+    public static final RegistryObject<Block> BLOOD_DIRT=BLOCKS.register("blood_dirt",()->new BloodDirt(AbstractBlock.Properties.create(Material.GOURD, MaterialColor.RED).hardnessAndResistance(2.0F,2.0F).harvestTool(ToolType.SHOVEL).harvestLevel(2).sound(SoundType.GROUND)));
+    public static final RegistryObject<Block> BLOOD_STONE=BLOCKS.register("blood_stone",()->new BloodStone(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(4.0F,4.0F).harvestTool(ToolType.PICKAXE).harvestLevel(4)));
+    public static final RegistryObject<Block> BLOOD_COBBLESTONE=BLOCKS.register("blood_cobblestone",()->new BloodCobblestone(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(4.0F,4.0F).harvestTool(ToolType.PICKAXE).harvestLevel(4)));
+    public static final RegistryObject<Block> BLOOD_ORE=BLOCKS.register("blood_ore",()->new BloodOre(AbstractBlock.Properties.create(Material.ROCK, MaterialColor.RED).hardnessAndResistance(4.0F,4.0F).harvestTool(ToolType.PICKAXE).harvestLevel(4)));
+
+
+
+
 }

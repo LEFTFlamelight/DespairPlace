@@ -5,6 +5,7 @@ import com.lediter.despair.block.superBlock.RotaryContainer;
 import com.lediter.despair.entity.EntityTypeRegister;
 import com.lediter.despair.entity.KiriaEntity;
 import com.lediter.despair.entity.renderer.KiriaEntityRenderer;
+import com.lediter.despair.event.world.biome.BloodPlaceBiome;
 import com.lediter.despair.item.ItemRegistry;
 import com.lediter.despair.sound.SoundRegistry;
 import net.minecraft.block.Block;
@@ -43,6 +44,8 @@ public static final String MOD_ID="despair";
             () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
     public DespairMod() {
         // Register the setup method for modloading
+
+        FMLJavaModLoadingContext.get().getModEventBus().register(new BloodPlaceBiome.BiomeRegisterHandler());
 
         FMLJavaModLoadingContext.get().getModEventBus().register(new KiriaEntityRenderer.ModelRegisterHandler());
 

@@ -36,7 +36,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> KIRIA_CONSCIOUSNESS;
     public static final RegistryObject<Item> TFGOGP;
     public static final RegistryObject<Item> DEATH_BOX;
-
+    public static final RegistryObject<Item> BLOOD_INGOT;
 
 
 
@@ -45,6 +45,10 @@ public class ItemRegistry {
     public static final RegistryObject<Item> DESPAIR_SWORD;
     public static final RegistryObject<Item> ABOVE_DESPAIR;
     public static final RegistryObject<Item> DESPAIR_PICKAXE;
+    public static final RegistryObject<Item> DESPAIR_SHOVEL;
+
+
+
     //方块添加注册
     public static final RegistryObject<Item> DESPAIR_BLOCK;
     public static final RegistryObject<Item> DESPAIR_BOX;
@@ -57,6 +61,12 @@ public class ItemRegistry {
     public static final RegistryObject<Item> TURNING_STAIRS;
     public static final RegistryObject<Item> ROTARY_CONTAINER;
     public static final RegistryObject<Item> DESPAIR_STONE;
+    public static final RegistryObject<Item> BLOOD_DIRT;
+    public static final RegistryObject<Item> BLOOD_STONE;
+    public static final RegistryObject<Item> BLOOD_COBBLESTONE;
+    public static final RegistryObject<Item> BLOOD_ORE;
+
+
 
 static{
     //物品
@@ -76,14 +86,17 @@ static{
     KIRIA_CONSCIOUSNESS=ITEMS.register("kiria_consciousness",() -> new KiriaConsciousness(new Item.Properties().group(DespairMod.ITEMS)));
     TFGOGP=ITEMS.register("tfgogp",() -> new Tfgogp(new Item.Properties().group(DespairMod.ITEMS)));
     DEATH_BOX=ITEMS.register("death_box",() -> new DeathBox(new Item.Properties().group(DespairMod.ITEMS)));
+    BLOOD_INGOT=ITEMS.register("blood_ingot",() -> new BloodIngot(new Item.Properties().group(DespairMod.ITEMS).rarity(Rarity.UNCOMMON)));
+
+
+
 
     //工具添加注册
     DESPAIR_AXE=ITEMS.register("despair_axe",() -> new AxeItem(ExampleTools.DESPAIR,5,-3F,new Item.Properties().group(DespairMod.ITEMS)));
     DESPAIR_SWORD=ITEMS.register("despair_sword",() -> new DespairSword(new Item.Properties().group(DespairMod.ITEMS)));
     ABOVE_DESPAIR=ITEMS.register("above_despair",() -> new SwordItem(ExampleTools.DESPAIR,10,-2F,new Item.Properties().group(DespairMod.ITEMS)));
-
-
     DESPAIR_PICKAXE=ITEMS.register("despair_pickaxe",() -> new PickaxeItem(ExampleTools.DESPAIR,-7,-2.4F,new Item.Properties().group(DespairMod.ITEMS)));
+    DESPAIR_SHOVEL=ITEMS.register("despair_shovel",() -> new ShovelItem(ExampleTools.DESPAIR,-7,-2.4F,new Item.Properties().group(DespairMod.ITEMS)));
     //方块添加注册
     DESPAIR_BLOCK=ITEMS.register("despair_block",()->new BlockItem(BlockRegistry.DESPAIR_BLOCK.get(),new Item.Properties().group(DespairMod.ITEMS)));
     DESPAIR_BOX=ITEMS.register("despair_box",()->new BlockItem(BlockRegistry.DESPAIR_BOX.get(),new Item.Properties().group(DespairMod.ITEMS)));
@@ -96,6 +109,14 @@ static{
     TURNING_STAIRS=ITEMS.register("turning_stairs",()->new BlockItem(BlockRegistry.TURNING_STAIRS.get(),new Item.Properties().group(DespairMod.ITEMS)));
     ROTARY_CONTAINER=ITEMS.register("rotary_container",()->new BlockItem(BlockRegistry.ROTARY_CONTAINER.get(),new Item.Properties().group(DespairMod.ITEMS)));
     DESPAIR_STONE=ITEMS.register("despair_stone",()->new BlockItem(BlockRegistry.DESPAIR_STONE.get(),new Item.Properties().group(DespairMod.ITEMS)));
+    BLOOD_DIRT=ITEMS.register("blood_dirt",()->new BlockItem(BlockRegistry.BLOOD_DIRT.get(),new Item.Properties().group(DespairMod.ITEMS)));
+    BLOOD_STONE=ITEMS.register("blood_stone",()->new BlockItem(BlockRegistry.BLOOD_STONE.get(),new Item.Properties().group(DespairMod.ITEMS)));
+    BLOOD_COBBLESTONE=ITEMS.register("blood_cobblestone",()->new BlockItem(BlockRegistry.BLOOD_COBBLESTONE.get(),new Item.Properties().group(DespairMod.ITEMS)));
+    BLOOD_ORE=ITEMS.register("blood_ore",()->new BlockItem(BlockRegistry.BLOOD_ORE.get(),new Item.Properties().group(DespairMod.ITEMS)));
+
+
+
+
 }
 
 }
