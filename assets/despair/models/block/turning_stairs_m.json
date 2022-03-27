@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "despair:block/turning_stone",
-    "top": "despair:block/turning_stone",
-    "side": "despair:block/turning_stone"
-  }
-}
