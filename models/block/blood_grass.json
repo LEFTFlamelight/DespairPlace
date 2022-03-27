@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "despair:block/blood_grass",
+    "particle": "despair:block/blood_grass"
+  }
+}

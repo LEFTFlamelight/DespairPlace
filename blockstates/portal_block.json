@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "despair:block/portal_block_ew"
+    },
+    "axis=x": {
+      "model": "despair:block/portal_block_ns"
+    }
+  }
+}

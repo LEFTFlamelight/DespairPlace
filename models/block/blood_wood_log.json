@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "despair:block/bloodwood_log_top",
+    "up": "despair:block/bloodwood_log_top",
+    "north": "despair:block/bloodwood_log_side",
+    "east": "despair:block/bloodwood_log_side",
+    "south": "despair:block/bloodwood_log_side",
+    "west": "despair:block/bloodwood_log_side",
+    "particle": "despair:block/bloodwood_log_top"
+  }
+}

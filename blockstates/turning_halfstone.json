@@ -1,0 +1,13 @@
+{
+  "variants": {
+      "type=bottom": {
+        "model": "despair:block/turning_halfstone_m"
+      },
+      "type=top": {
+        "model": "despair:block/turning_halfstone_m_top"
+      },
+      "type=double": {
+        "model": "despair:block/turning_halfstone_m_full"
+      }
+    }
+  }

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "despair:block/blood_wood_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "despair:block/blood_wood_log"
+    },
+    "axis=z": {
+      "model": "despair:block/blood_wood_log",
+      "x": 90
+    }
+  }
+}

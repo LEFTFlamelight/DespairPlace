@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "despair:block/bloodwood_leaves",
+    "particle": "despair:block/bloodwood_leaves"
+  }
+}
