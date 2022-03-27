@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "despair:blood_bucket"
+    }
+  ],
+  "result": {
+    "item": "despair:blood_ingot"
+  }
+}
