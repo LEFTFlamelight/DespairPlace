@@ -2,20 +2,23 @@ package com.lediter.despair.item;
 
 import com.lediter.despair.DespairMod;
 import com.lediter.despair.block.BlockRegistry;
-import com.lediter.despair.entity.EntityTypeRegister;
-import com.lediter.despair.entity.KiriaEntity;
-import com.lediter.despair.item.superItem.*;
+import com.lediter.despair.item.consciousness.*;
+import com.lediter.despair.item.Items.*;
+import com.lediter.despair.item.Items.DespairCrystal;
+import com.lediter.despair.item.Items.DespairFragment;
+import com.lediter.despair.item.tool.BloodAxe;
+import com.lediter.despair.item.tool.BloodPickaxe;
+import com.lediter.despair.item.tool.BloodSword;
+import com.lediter.despair.item.tool.DespairSword;
 import com.lediter.despair.tools.ExampleArmor;
 import com.lediter.despair.tools.ExampleTools;
-import net.minecraft.entity.EntityType;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
-import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.function.Supplier;
+import static com.lediter.despair.fluid.FluidRegistry.still;
 
 
 public class ItemRegistry {
@@ -38,6 +41,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> DEATH_BOX;
     public static final RegistryObject<Item> BLOOD_INGOT;
 
+    //流体桶添加注册
+    public static final RegistryObject<Item> BLOOD_BUCKET;
+
 
 
     //工具添加注册
@@ -46,7 +52,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> ABOVE_DESPAIR;
     public static final RegistryObject<Item> DESPAIR_PICKAXE;
     public static final RegistryObject<Item> DESPAIR_SHOVEL;
-
+    public static final RegistryObject<Item> BLOOD_SWORD;
+    public static final RegistryObject<Item> BLOOD_PICKAXE;
+    public static final RegistryObject<Item> BLOOD_AXE;
 
 
     //方块添加注册
@@ -86,10 +94,11 @@ static{
     KIRIA_CONSCIOUSNESS=ITEMS.register("kiria_consciousness",() -> new KiriaConsciousness(new Item.Properties().group(DespairMod.ITEMS)));
     TFGOGP=ITEMS.register("tfgogp",() -> new Tfgogp(new Item.Properties().group(DespairMod.ITEMS)));
     DEATH_BOX=ITEMS.register("death_box",() -> new DeathBox(new Item.Properties().group(DespairMod.ITEMS)));
-    BLOOD_INGOT=ITEMS.register("blood_ingot",() -> new BloodIngot(new Item.Properties().group(DespairMod.ITEMS).rarity(Rarity.UNCOMMON)));
-
-
-
+    BLOOD_INGOT=ITEMS.register("blood_ingot",() -> new BloodIngot("tooltip.blood_ingot.shift","tooltip.despair.shift2",new Item.Properties().group(DespairMod.ITEMS).rarity(Rarity.UNCOMMON)));
+    //流体桶添加注册
+    BLOOD_BUCKET=ITEMS.register("blood_bucket",()->new BucketItem(still,
+            new Item.Properties().containerItem(Items.BUCKET).maxStackSize(1).group(DespairMod.ITEMS).rarity(Rarity.COMMON))
+    );
 
     //工具添加注册
     DESPAIR_AXE=ITEMS.register("despair_axe",() -> new AxeItem(ExampleTools.DESPAIR,5,-3F,new Item.Properties().group(DespairMod.ITEMS)));
@@ -97,6 +106,10 @@ static{
     ABOVE_DESPAIR=ITEMS.register("above_despair",() -> new SwordItem(ExampleTools.DESPAIR,10,-2F,new Item.Properties().group(DespairMod.ITEMS)));
     DESPAIR_PICKAXE=ITEMS.register("despair_pickaxe",() -> new PickaxeItem(ExampleTools.DESPAIR,-7,-2.4F,new Item.Properties().group(DespairMod.ITEMS)));
     DESPAIR_SHOVEL=ITEMS.register("despair_shovel",() -> new ShovelItem(ExampleTools.DESPAIR,-7,-2.4F,new Item.Properties().group(DespairMod.ITEMS)));
+    BLOOD_SWORD=ITEMS.register("blood_sword",() -> new BloodSword(new Item.Properties().group(DespairMod.ITEMS)));
+    BLOOD_PICKAXE=ITEMS.register("blood_pickaxe",() -> new BloodPickaxe(new Item.Properties().group(DespairMod.ITEMS)));
+    BLOOD_AXE=ITEMS.register("blood_axe",() -> new BloodAxe(new Item.Properties().group(DespairMod.ITEMS)));
+
     //方块添加注册
     DESPAIR_BLOCK=ITEMS.register("despair_block",()->new BlockItem(BlockRegistry.DESPAIR_BLOCK.get(),new Item.Properties().group(DespairMod.ITEMS)));
     DESPAIR_BOX=ITEMS.register("despair_box",()->new BlockItem(BlockRegistry.DESPAIR_BOX.get(),new Item.Properties().group(DespairMod.ITEMS)));

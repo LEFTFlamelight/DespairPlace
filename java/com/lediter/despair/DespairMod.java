@@ -1,18 +1,29 @@
 package com.lediter.despair;
 
 import com.lediter.despair.block.BlockRegistry;
+import com.lediter.despair.block.superBlock.BloodOre;
 import com.lediter.despair.block.superBlock.RotaryContainer;
+import com.lediter.despair.entity.BloodVillagerEntity;
 import com.lediter.despair.entity.EntityTypeRegister;
 import com.lediter.despair.entity.KiriaEntity;
+import com.lediter.despair.entity.renderer.BloodVillagerRenderer;
 import com.lediter.despair.entity.renderer.KiriaEntityRenderer;
 import com.lediter.despair.event.world.biome.BloodPlaceBiome;
+import com.lediter.despair.fluid.FluidRegistry;
 import com.lediter.despair.item.ItemRegistry;
 import com.lediter.despair.sound.SoundRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.WorldGenRegistries;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -29,8 +40,12 @@ import net.minecraftforge.fml.network.simple.SimpleChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.Objects;
 import java.util.stream.Collectors;
 
+import static com.lediter.despair.event.world.biome.BloodPlaceBiome.biome;
+import static com.lediter.despair.fluid.FluidRegistry.flowing;
+import static com.lediter.despair.fluid.FluidRegistry.still;
 import static org.apache.http.params.CoreProtocolPNames.PROTOCOL_VERSION;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -45,6 +60,14 @@ public static final String MOD_ID="despair";
     public DespairMod() {
         // Register the setup method for modloading
 
+        FMLJavaModLoadingContext.get().getModEventBus().register(new FluidRegistry.FluidRegisterHandler());
+
+        FMLJavaModLoadingContext.get().getModEventBus().register(new BloodVillagerRenderer.ModelRegisterHandler());
+
+        FMLJavaModLoadingContext.get().getModEventBus().register(new BloodVillagerEntity.EntityAttributesRegisterHandler());
+
+        FMLJavaModLoadingContext.get().getModEventBus().register(new BloodOre.FeatureRegisterHandler());
+
         FMLJavaModLoadingContext.get().getModEventBus().register(new BloodPlaceBiome.BiomeRegisterHandler());
 
         FMLJavaModLoadingContext.get().getModEventBus().register(new KiriaEntityRenderer.ModelRegisterHandler());
@@ -56,9 +79,14 @@ public static final String MOD_ID="despair";
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
         ItemRegistry.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
         BlockRegistry.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
         SoundRegistry.SOUNDS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
         EntityTypeRegister.ENTITY_TYPES.register(FMLJavaModLoadingContext.get().getModEventBus());
+
+
         // Register the enqueueIMC method for modloading
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
@@ -72,20 +100,27 @@ public static final String MOD_ID="despair";
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
+        BiomeManager.addBiome(BiomeManager.BiomeType.WARM,
+                new BiomeManager.BiomeEntry(RegistryKey.getOrCreateKey(Registry.BIOME_KEY,
+                        Objects.requireNonNull(WorldGenRegistries.BIOME.getKey(biome))), 10));
+        // some pre-init code
+        LOGGER.info("FORGE I LOVE YOU!!!!!!");
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
+        event.enqueueWork(()->{
+            RenderTypeLookup.setRenderLayer(still, RenderType.getTranslucent());
+            RenderTypeLookup.setRenderLayer(flowing, RenderType.getTranslucent());
+        });
         LOGGER.info("Got game settings {}", event.getMinecraftSupplier().get());
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event)
     {
         // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
+        InterModComms.sendTo("despair", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
     }
 
     private void processIMC(final InterModProcessEvent event)

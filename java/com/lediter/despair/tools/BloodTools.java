@@ -6,13 +6,10 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.LazyValue;
 
 import java.util.function.Supplier;
-
-public enum ExampleTools implements IItemTier {
-//最大使用次数，效率，攻击伤害，等级，附魔等级
-    DESPAIR(4000,10.0F,10.0F,9,8,()->{
-        return Ingredient.fromItems(ItemRegistry.DESPAIR_CRYSTAL.get());
+public enum BloodTools implements IItemTier {
+    BLOOD(5000,12.0F,12.0F,9,8,()->{
+        return Ingredient.fromItems(ItemRegistry.BLOOD_INGOT.get());
     });
-
     private int maxUses;
     private float efficiency;
     private float attackDamage;
@@ -20,7 +17,7 @@ public enum ExampleTools implements IItemTier {
     private int enchatability;
     private LazyValue<Ingredient> repairMaterial;
 
-    ExampleTools(int maxUses, float efficiency, float attackDamage, int havestLevel, int enchatability, Supplier<Ingredient> repairMaterial){
+    BloodTools(int maxUses, float efficiency, float attackDamage, int havestLevel, int enchatability, Supplier<Ingredient> repairMaterial){
         this.maxUses=maxUses;
         this.efficiency=efficiency;
         this.attackDamage=attackDamage;
@@ -57,5 +54,4 @@ public enum ExampleTools implements IItemTier {
     public Ingredient getRepairMaterial() {
         return this.repairMaterial.getValue();
     }
-
 }

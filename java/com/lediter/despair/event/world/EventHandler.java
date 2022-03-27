@@ -18,8 +18,8 @@ public class EventHandler {
         if(!event.getCategory().equals(Biome.Category.NETHER)||!event.getCategory().equals(Biome.Category.THEEND));{
     oreGenSet(event.getGeneration(),
             OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
-            BlockRegistry.DESPAIR_BLOCK.get().getDefaultState(),
-            9,1,32,30,7);
+            BlockRegistry.BLOOD_ORE.get().getDefaultState(),
+            12,1,32,30,7);
     //矿石区块生成多少，矿石生成最低高度，矿石偏移量，矿石生成最高高度，矿石堆大小
         }
     }
