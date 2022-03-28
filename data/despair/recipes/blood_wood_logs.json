@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "despair:blood_wood_log"
+    }
+  ],
+  "result": {
+    "item": "despair:blood_wood_planks",
+    "count": 4
+  }
+}

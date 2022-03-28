@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DAD",
+    "CFC",
+    "CFC"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:gold_ingot"
+    },
+    "A": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "F": {
+      "item": "minecraft:air"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "minecraft:stone"
+  }
+}

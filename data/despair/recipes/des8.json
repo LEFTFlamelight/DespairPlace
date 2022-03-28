@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+      "YYY",
+      "YDY",
+      "DDD"
+    ],
+    "key": {
+      "D": {
+        "item": "minecraft:air"
+      },
+      "Y": {
+        "item": "despair:despair_block"
+      }
+    },
+    "result": {
+      "item": "despair:despair_helmet",
+      "count": 1
+    }
+  }
+  

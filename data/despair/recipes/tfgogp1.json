@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "despair:tfgogp"
+    },
+    {
+      "item": "despair:death_box"
+    }
+  ],
+  "result": {
+    "item": "despair:kiria_consciousness"
+  }
+}

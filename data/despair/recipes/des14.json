@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "DFD",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "minecraft:ghast_tear"
+    },
+    "F": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "despair:consciousness_stone",
+    "count": 1
+  }
+}
